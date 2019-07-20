@@ -1,0 +1,5 @@
+#Depedencies
+node_modules/
+#Compine output
+dist
+
