@@ -1,3 +1,5 @@
+import { common } from "../../commons";
+
 export default function helloWorld () {
-    return 'Hello World'
+    return common();
 }

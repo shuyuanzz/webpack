@@ -7,7 +7,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const glob = require('glob');
-
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const setMpa = () => {
     let entry = {};
     let htmlWebpackPlugin = [];
@@ -20,7 +20,7 @@ const setMpa = () => {
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, `src/${pageName}/index.html`),
                 filename: `${pageName}.html`,
-                chunks: [pageName],
+                chunks: ['vendors','commons', pageName],
                 inject: true,
                 minify: {
                     html5: true,
@@ -48,7 +48,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "[name]_[chunkhash:8].js"
     },
-    mode: "production",
+    mode: "production",// 默认开启three-shaking。
     module: {
         rules: [{
                 test: /\.js|jsx$/,
@@ -109,6 +109,37 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module:'react',
+        //             entry:'https://unpkg.com/react@16/umd/react.production.min.js',
+        //             global:'React'
+        //         },
+        //         {
+        //             module:'react-dom',
+        //             entry:'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+        //             global:'ReactDOM'
+        //         }
+        //     ]
+        // })
 
-    ].concat(htmlWebpackPlugin)
+    ].concat(htmlWebpackPlugin),
+    optimization: {
+        splitChunks: {
+            minSize:0,
+            cacheGroups: {
+                vendors: {
+                    test: /(react|react-dom)/,
+                    name: 'vendors',
+                    chunks: 'all'
+                },
+                commons: {
+                    name:'commons',
+                    chunks:'all',
+                    minChunks:2
+                }
+            }
+        }
+    }
 };
