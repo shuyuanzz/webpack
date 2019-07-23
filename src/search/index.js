@@ -4,10 +4,23 @@ import "./search.less";
 import { common } from "../../commons";
 import { a } from "./three-shaking";
 export default class Search extends React.Component {
+  constructor() {
+    super(...arguments);
+    this.state = {
+      text:null,
+    }
+  }
+  dynamicAddComponent = () => {
+    import('./text').then((text) => {
+      this.setState({
+        text:text.default
+      })
+    })
+  }
   render() {
-    debugger
     return (
-      <div className="search-text">
+      <div className="search-text" onClick={this.dynamicAddComponent}>
+        {!this.state.text? null : this.state.text()}
         Search Page 8 {a()}
       </div>
     );

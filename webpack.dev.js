@@ -41,7 +41,6 @@ const {
     entry,
     htmlWebpackPlugin
 } = setMpa();
-console.log('entry', entry)
 module.exports = {
     entry: entry,
     output: {
