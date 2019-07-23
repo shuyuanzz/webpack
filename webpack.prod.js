@@ -20,7 +20,7 @@ const setMpa = () => {
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, `src/${pageName}/index.html`),
                 filename: `${pageName}.html`,
-                chunks: ['vendors','commons', pageName],
+                chunks: ['vendors', 'commons', pageName],
                 inject: true,
                 minify: {
                     html5: true,
@@ -48,11 +48,11 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "[name]_[chunkhash:8].js"
     },
-    mode: "production",// 默认开启three-shaking。
+    mode: "production", // 默认开启three-shaking。
     module: {
         rules: [{
                 test: /\.js|jsx$/,
-                use: "babel-loader"
+                use: ["babel-loader"]
             },
             {
                 test: /\.css$/,
@@ -127,7 +127,7 @@ module.exports = {
     ].concat(htmlWebpackPlugin),
     optimization: {
         splitChunks: {
-            minSize:0,
+            minSize: 0,
             cacheGroups: {
                 vendors: {
                     test: /(react|react-dom)/,
@@ -135,9 +135,9 @@ module.exports = {
                     chunks: 'all'
                 },
                 commons: {
-                    name:'commons',
-                    chunks:'all',
-                    minChunks:2
+                    name: 'commons',
+                    chunks: 'all',
+                    minChunks: 2
                 }
             }
         }
