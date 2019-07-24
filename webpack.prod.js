@@ -108,7 +108,7 @@ module.exports = {
             assetNameRegExp: /\.css$/,
             cssProcessor: require('cssnano')
         }),
-        new CleanWebpackPlugin(),
+            new CleanWebpackPlugin(),
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //         {

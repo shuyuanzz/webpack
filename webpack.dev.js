@@ -51,7 +51,7 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.js|jsx$/,
-                use: ["babel-loader","eslint-loader"]
+                use: ["babel-loader", "eslint-loader"]
             },
             {
                 test: /\.css$/,
@@ -86,3 +86,4 @@ module.exports = {
     },
     devtool: 'source-map',
 };
+
