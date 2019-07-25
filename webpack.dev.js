@@ -80,9 +80,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(),
         new FriendlyErrorPlugin(),
+        new CleanWebpackPlugin(),
     ].concat(htmlWebpackPlugin),
     devServer: {
         contentBase: './dist',

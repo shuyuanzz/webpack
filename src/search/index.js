@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./search.less";
-import { common } from "../../commons";
 import { a } from "./three-shaking";
 export default class Search extends React.Component {
   constructor() {
