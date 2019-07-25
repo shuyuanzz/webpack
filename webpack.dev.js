@@ -5,7 +5,7 @@ const {
 } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const glob = require('glob');
-
+const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin');
 
 const setMpa = () => {
     let entry = {};
@@ -51,7 +51,7 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.js|jsx$/,
-                use: ["babel-loader", "eslint-loader"]
+                use: ["babel-loader"]
             },
             {
                 test: /\.css$/,
@@ -79,11 +79,15 @@ module.exports = {
             }
         ]
     },
-    plugins: [new webpack.HotModuleReplacementPlugin(), new CleanWebpackPlugin()].concat(htmlWebpackPlugin),
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(),
+        new FriendlyErrorPlugin(),
+    ].concat(htmlWebpackPlugin),
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        stats: 'errors-only'
     },
     devtool: 'source-map',
 };
-

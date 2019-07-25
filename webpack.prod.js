@@ -8,6 +8,7 @@ const {
 } = require('clean-webpack-plugin');
 const glob = require('glob');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin');
 const setMpa = () => {
     let entry = {};
     let htmlWebpackPlugin = [];
@@ -48,7 +49,7 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "[name]_[chunkhash:8].js"
     },
-    mode: "production", // 默认开启three-shaking。
+    mode: "production", // 默认开启three-shaking scopehosting。
     module: {
         rules: [{
                 test: /\.js|jsx$/,
@@ -109,6 +110,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
             new CleanWebpackPlugin(),
+            new FriendlyErrorPlugin()
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //         {
@@ -141,5 +143,6 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    stats:'errors-only'
 };
