@@ -12,16 +12,16 @@ const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin');
 const setMpa = () => {
     let entry = {};
     let htmlWebpackPlugin = [];
-    let entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'));
+    let entryFiles = glob.sync(path.join(__dirname, 'src/*/main.tsx'));
     entryFiles.forEach(item => {
-        const math = item.match(/src\/(.*)\/index\.js/);
+        const math = item.match(/src\/(.*)\/main\.tsx/);
         const pageName = math && math[1];
         entry[pageName] = item;
         htmlWebpackPlugin.push(
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, `src/${pageName}/index.html`),
                 filename: `${pageName}.html`,
-                chunks: ['vendors', 'commons', pageName],
+                chunks: [pageName],
                 inject: true,
                 minify: {
                     html5: true,
@@ -50,11 +50,15 @@ module.exports = {
         filename: "[name]_[chunkhash:8].js"
     },
     mode: "production", // 默认开启three-shaking scopehosting。
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    },
     module: {
-        rules: [{
-                test: /\.js|jsx$/,
-                use: ["babel-loader"]
-            },
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+              },
             {
                 test: /\.css$/,
                 use: [
