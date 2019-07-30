@@ -12,6 +12,7 @@ body #root{
     border: 1px solid black;
     border-color: hsl(113, 0%, 89%);
     background-color: rgb(247,247,247);
+    transition: all 2s;
 }
 .nav-title {
     font-size:30px;
@@ -65,4 +66,11 @@ body #root{
 }
 .nav-list-cld:hover {
     background-color: rgb(231, 240, 247);;
+}
+@media screen and (max-width: 700px) {
+    .nav-container {
+        width: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
 }
