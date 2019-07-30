@@ -88,10 +88,9 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new FriendlyErrorPlugin(),
-        new CleanWebpackPlugin(),
     ].concat(htmlWebpackPlugin),
     devServer: {
-        contentBase: './dist',
+        contentBase: path.join(__dirname,'dist'),
         hot: true,
         stats: 'errors-only'
     },

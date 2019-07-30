@@ -6,6 +6,6 @@ export interface IProps {
 export default class HelloComponent extends React.Component<IProps, {}> {
   render() {
     const { compiler } = this.props;
-    return <div>this is a {compiler} project</div>;
+    return <div>this is  {compiler} project</div>;
   }
 }
