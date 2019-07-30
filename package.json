@@ -66,6 +66,7 @@
     "@types/react-dom": "^16.8.5",
     "lib-flexible": "^0.3.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0"
   }
 }

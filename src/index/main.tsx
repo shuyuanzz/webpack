@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import HelloComponent from "./hello";
+import Index from ".";
 
 ReactDOM.render(
-  <HelloComponent compiler="TypeScript" />,
+  <Index/>,
   document.getElementById("root")
 );
