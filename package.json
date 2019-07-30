@@ -67,6 +67,7 @@
     "lib-flexible": "^0.3.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "strip-ansi": "^5.2.0"
   }
 }
