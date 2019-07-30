@@ -3,56 +3,65 @@
     margin: 0;
     box-sizing: border-box;
 }
-body #root{
+
+body #root {
     display: flex;
 }
+
 .nav-container {
     width: 272px;
     height: 100vh;
     border: 1px solid black;
     border-color: hsl(113, 0%, 89%);
-    background-color: rgb(247,247,247);
-    transition: all 2s;
+    background-color: rgb(247, 247, 247);
+    transition: all 1s;
 }
+
 .nav-title {
-    font-size:30px;
+    font-size: 30px;
     margin: 30px 0;
     text-align: center;
     color: rgb(11, 135, 218);
     font-weight: 200;
 }
-.nav-input  {
+
+.nav-input {
     width: 100%;
     height: 40px;
     border: none;
     font-size: 15px;
-    color: rgb(77,77,77);
+    color: rgb(77, 77, 77);
     font-weight: 300;
     padding-left: 10px;
 }
+
 .input-wapper {
     display: flex;
-    border-top:1px solid hsl(113, 0%, 89%);
-    border-bottom:1px solid hsl(113, 0%, 89%);
+    border-top: 1px solid hsl(113, 0%, 89%);
+    border-bottom: 1px solid hsl(113, 0%, 89%);
     margin-bottom: 30px;
 }
+
 .nav-search-icon {
     background-color: #fff;
     font-size: 40px;
     color: #d6d2d2
 }
+
 .nav-list {
     overflow: hidden;
     padding: 0 25px;
-    list-style-type:none;
+    list-style-type: none;
 }
+
 .nav-list-cld {
     padding-left: 20px;
     font-size: 16px;
     margin: 16px 0;
 }
+
 .nav-list-cld a {
-    color: rgb(77,77,77);
+    color: rgb(77, 77, 77);
     text-decoration: none;
     font-weight: 400;
     line-height: 27.2px;
@@ -64,13 +73,53 @@ body #root{
     text-decoration-line: underline;
     font-weight: bold;
 }
+
 .nav-list-cld:hover {
-    background-color: rgb(231, 240, 247);;
+    background-color: rgb(231, 240, 247);
 }
+
+header {
+    display: none;
+}
+
+header span {
+    font-size: 30px;
+    color: rgb(11, 135, 218);
+    font-weight: 200;
+    line-height: 70px;
+}
+
+.menu {
+    font-size: 40px;
+    color: rgb(77, 77, 77);
+    background-color: #e3e3e3;
+    margin-top: 20px;
+}
+
+.github-corner {
+    height: 70px;
+    width: 70px;
+    color: white;
+}
+.github-corner svg {
+    fill: rgb(11, 135, 218);
+}
+
 @media screen and (max-width: 700px) {
     .nav-container {
+        height: 0;
         width: 0;
         overflow: hidden;
         opacity: 0;
+    }
+
+    body #root {
+        display: block;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid hsl(113, 0%, 89%);
     }
 }
