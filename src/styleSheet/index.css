@@ -3,7 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body #root{
+    display: flex;
+}
 .nav-container {
     width: 272px;
     height: 100vh;
