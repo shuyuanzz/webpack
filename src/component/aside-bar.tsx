@@ -20,7 +20,7 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
       subTitle: this.props.subTitleList,
       hash: "",
       showList: false,
-      currentPage: ""
+      currentPage: "",
     };
   }
   private changeListState = () => {
@@ -50,14 +50,14 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
   }
   render() {
     const { title } = this.props;
-    const { subTitle, showList, currentPage } = this.state;
+    const { subTitle, showList, currentPage} = this.state;
     const child = hashFilter(this.state.hash);
     return (
       <React.Fragment>
         <header>
           <IoIosMenu className="menu" onClick={this.changeListState} />
           <a href={window.location.pathname}>{title}</a>
-          <ul className={showList? "show" : ""}>
+          <ul className={showList ? "show" : ""}>
             {this.props.subTitleList.map(item => (
               <li key={item.hash}>
                 <a href={`#${item.hash}`} onClick={this.changeListState}>
