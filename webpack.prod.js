@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,7 +6,6 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const glob = require('glob');
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin');
 const setMpa = () => {
     let entry = {};
@@ -115,21 +113,6 @@ module.exports = {
         }),
             new CleanWebpackPlugin(),
             new FriendlyErrorPlugin()
-        // new HtmlWebpackExternalsPlugin({
-        //     externals: [
-        //         {
-        //             module:'react',
-        //             entry:'https://unpkg.com/react@16/umd/react.production.min.js',
-        //             global:'React'
-        //         },
-        //         {
-        //             module:'react-dom',
-        //             entry:'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-        //             global:'ReactDOM'
-        //         }
-        //     ]
-        // })
-
     ].concat(htmlWebpackPlugin),
     optimization: {
         splitChunks: {
