@@ -13,10 +13,17 @@ export default class Index extends React.Component<any, Istate> {
       needLogin: true
     };
   }
+  changeStatus = () => {
+    this.setState(prevstate => {
+      return {
+        needLogin: !prevstate.needLogin
+      };
+    });
+  };
   render() {
     const { needLogin } = this.state;
     return needLogin ? (
-      <LoginMoadl />
+      <LoginMoadl loginEvent={this.changeStatus}/>
     ) : (
       <AsideBar title="demo" subTitleList={listData} />
     );
