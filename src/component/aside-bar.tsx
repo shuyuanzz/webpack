@@ -9,6 +9,8 @@ interface Iprops {
 interface Istate {
   subTitle: Array<{ name: string; hash: string }>;
   hash: string;
+  showList: boolean;
+  currentPage: string;
 }
 export default class AsideBar extends React.Component<Iprops, Istate> {
   private input: any;
@@ -16,9 +18,19 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
     super(props);
     this.state = {
       subTitle: this.props.subTitleList,
-      hash: ""
+      hash: "",
+      showList: false,
+      currentPage: ""
     };
   }
+  private changeListState = () => {
+    this.setState(prevState => {
+      return {
+        showList: !prevState.showList
+      };
+    });
+  };
+
   private hashHander = () => {
     this.setState({ hash: window.location.hash.substr(1) });
   };
@@ -38,17 +50,27 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
   }
   render() {
     const { title } = this.props;
-    const { subTitle } = this.state;
+    const { subTitle, showList, currentPage } = this.state;
     const child = hashFilter(this.state.hash);
     return (
       <React.Fragment>
         <header>
-          <IoIosMenu className="menu" />
-          <span>demo</span>
-          <div></div>
+          <IoIosMenu className="menu" onClick={this.changeListState} />
+          <a href={window.location.pathname}>{title}</a>
+          <ul className={showList? "show" : ""}>
+            {this.props.subTitleList.map(item => (
+              <li key={item.hash}>
+                <a href={`#${item.hash}`} onClick={this.changeListState}>
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </header>
         <nav className="nav-container">
-          <div className="nav-title">{title}</div>
+          <a href={window.location.pathname} className="nav-title">
+            {title}
+          </a>
           <div className="input-wapper">
             <IoIosSearch className="nav-search-icon" />
             <input
@@ -62,13 +84,23 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
           <ul className="nav-list">
             {subTitle.map(item => (
               <li key={item.hash} className="nav-list-cld">
-                <a href={`#${item.hash}`}>{item.name}</a>
+                <a
+                  href={`#${item.hash}`}
+                  onClick={() => {
+                    this.setState({
+                      currentPage: item.name
+                    });
+                  }}
+                  className={currentPage === item.name ? "selected" : ""}
+                >
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
         </nav>
         {child}
-        <GitHubSvg/>
+        <GitHubSvg />
       </React.Fragment>
     );
   }

@@ -19,7 +19,7 @@ const setMpa = () => {
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, `src/${pageName}/index.html`),
                 filename: `${pageName}.html`,
-                chunks: [pageName],
+                chunks: ['vendors','common',pageName],
                 inject: true,
                 minify: {
                     html5: true,
