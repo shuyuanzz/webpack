@@ -144,10 +144,12 @@ header>a {
     color: rgb(11, 135, 218);
     letter-spacing: 1px;
 }
+
 .login-regist a:first-child {
     padding-right: 8px;
     border-right: 1px solid rgb(161, 159, 159);
 }
+
 .login-regist span {
     cursor: pointer;
     font-size: 15px;
@@ -155,6 +157,34 @@ header>a {
     letter-spacing: 1px;
 }
 
+@keyframes bouncing-loader {
+    to {
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
+
+.bouncing-loader {
+    display: flex;
+    justify-content: center;
+}
+
+.bouncing-loader>div {
+    width: 1rem;
+    height: 1rem;
+    margin: 3rem 0.2rem;
+    background: rgb(11, 135, 218);
+    border-radius: 50%;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+
+.bouncing-loader>div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bouncing-loader>div:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @media screen and (max-width: 700px) {
     .nav-container {
@@ -203,11 +233,13 @@ header>a {
         color: rgb(54, 53, 53);
         letter-spacing: 1px;
     }
+
     .main-container {
         display: block;
     }
+
     .login-regist {
-        right:15px;
-        top:50px;
+        right: 15px;
+        top: 50px;
     }
 }

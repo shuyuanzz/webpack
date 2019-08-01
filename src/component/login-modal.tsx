@@ -13,23 +13,26 @@ export default class LoginModal extends React.Component<Iprops, any> {
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      message: null
+      message: null,
+      loading: false
     };
     this.cookieManagement = new CookieManagement();
   }
   handleOnLogin = () => {
-    if(!/^[a-zA-Z0-9_-]{4,16}$/.test(this.account.value)){
+    if (!/^[a-zA-Z0-9_-]{4,16}$/.test(this.account.value)) {
       this.setState({
-        message:"Please enter 4 to 16 digits (letter, number, underscore, minus)"
-      })
-      return
+        message:
+          "Please enter 4 to 16 digits (letter, number, underscore, minus)"
+      });
+      return;
     }
-    if(this.password.value === "") {
+    if (this.password.value === "") {
       this.setState({
-        message:"password can not be blank"
-      })
-      return
+        message: "password can not be blank"
+      });
+      return;
     }
+    this.setState({ loading: true });
     this.props.axios
       .post("/login", {
         username: this.account.value,
@@ -41,7 +44,8 @@ export default class LoginModal extends React.Component<Iprops, any> {
           this.props.changePageStatus("index");
         } else {
           this.setState({
-            message: res.data.data.message
+            message: res.data.data.message,
+            loading: false
           });
           this.password.value = "";
           this.password.focus();
@@ -52,9 +56,18 @@ export default class LoginModal extends React.Component<Iprops, any> {
       });
   };
   render() {
-    const { message } = this.state;
+    const { message, loading } = this.state;
     const { changePageStatus } = this.props;
-    return (
+
+    return loading ? (
+      <div className="login-container">
+        <div className="bouncing-loader">
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    ) : (
       <div className="login-container">
         <div className="login-cart">
           <div className="login-title">login</div>
@@ -74,12 +87,10 @@ export default class LoginModal extends React.Component<Iprops, any> {
               ref={input => (this.password = input)}
             />
           </div>
-          {message && (
-            <span className="login-message"> {`${message} !`}</span>
-          )}
+          {message && <span className="login-message"> {`${message} !`}</span>}
           <div className="button-container">
             <button onClick={this.handleOnLogin}>登陆</button>
-            <button onClick={() => changePageStatus('regist')}>注册</button>
+            <button onClick={() => changePageStatus("regist")}>注册</button>
           </div>
         </div>
       </div>
