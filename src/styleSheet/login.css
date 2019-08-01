@@ -46,12 +46,12 @@
 .button-container {
     margin-top: 80px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .button-container button {
     height: 48px;
-    width: 80%;
+    width: 40%;
     background-color: rgb(11, 135, 218);
     color: white;
     line-height: 48px;
@@ -60,7 +60,17 @@
     border-radius: 8px;
     box-shadow: 0px 9px 0px rgb(11, 135, 218), 0px 9px 25px rgba(0, 0, 0, .7)
 }
-
+.login-message {
+    font-weight: 300;
+    margin-top:20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: rgb(241, 91, 91);
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
 @media screen and (max-width: 500px) {
     .login-cart {
         padding: 50px 20px;

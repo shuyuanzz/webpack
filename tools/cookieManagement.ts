@@ -1,5 +1,7 @@
+import { strict } from "assert";
+
 export default class CookieManagement {
-  public getItem(sKey) {
+  public getItem(sKey: any) {
     return (
       decodeURIComponent(
         document.cookie.replace(
@@ -13,7 +15,14 @@ export default class CookieManagement {
       ) || null
     );
   }
-  public setItem(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+  public setItem(
+    sKey: string,
+    sValue: any,
+    vEnd: any,
+    sPath: any,
+    sDomain: any,
+    bSecure: any
+  ) {
     if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
       return false;
     }
@@ -32,8 +41,18 @@ export default class CookieManagement {
         case Date:
           sExpires = "; expires=" + vEnd.toUTCString();
           break;
+        default:
+          sExpires = "";
+          break;
       }
     }
+    // console.log('shu',encodeURIComponent(sKey) +
+    // "=" +
+    // encodeURIComponent(sValue) +
+    // sExpires +
+    // (sDomain ? "; domain=" + sDomain : "") +
+    // (sPath ? "; path=" + sPath : "") +
+    // (bSecure ? "; secure" : ""))
     document.cookie =
       encodeURIComponent(sKey) +
       "=" +
@@ -44,7 +63,7 @@ export default class CookieManagement {
       (bSecure ? "; secure" : "");
     return true;
   }
-  public removeItem(sKey, sPath, sDomain) {
+  public removeItem(sKey: any, sPath: any, sDomain: any) {
     if (!sKey || !this.hasItem(sKey)) {
       return false;
     }
@@ -55,7 +74,7 @@ export default class CookieManagement {
       (sPath ? "; path=" + sPath : "");
     return true;
   }
-  public hasItem(sKey) {
+  public hasItem(sKey:string) {
     return new RegExp(
       "(?:^|;\\s*)" +
         encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") +

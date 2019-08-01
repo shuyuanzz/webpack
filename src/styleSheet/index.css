@@ -148,6 +148,12 @@ header>a {
     padding-right: 8px;
     border-right: 1px solid rgb(161, 159, 159);
 }
+.login-regist span {
+    cursor: pointer;
+    font-size: 15px;
+    color: rgb(11, 135, 218);
+    letter-spacing: 1px;
+}
 
 
 @media screen and (max-width: 700px) {

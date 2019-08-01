@@ -5,6 +5,7 @@ import listData from "../../conf/nav-list-data";
 import LoginModal from "../component/login-modal";
 import RegistModal from "../component/regist-modal";
 import Http from "../../tools/http";
+import hasLogin from "../../tools/hasLogin";
 interface Istate {
   pageStatus: string;
   listData: [];
@@ -14,7 +15,7 @@ export default class Index extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
     this.state = {
-      pageStatus: "index",
+      pageStatus: hasLogin() ? "index" : "login",
       listData: []
     };
     this.axios = new Http(
@@ -51,9 +52,19 @@ export default class Index extends React.Component<any, Istate> {
           />
         );
       case "login":
-        return <LoginModal />;
+        return (
+          <LoginModal
+            axios={this.axios}
+            changePageStatus={this.changePageStatus}
+          />
+        );
       case "regist":
-        return <RegistModal axios={this.axios}/>;
+        return (
+          <RegistModal
+            axios={this.axios}
+            changePageStatus={this.changePageStatus}
+          />
+        );
     }
   }
 }

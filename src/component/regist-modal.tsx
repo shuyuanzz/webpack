@@ -3,25 +3,16 @@ import "../styleSheet/login.css";
 import Http from "../../tools/http";
 interface Iprops {
   axios: Http;
+  changePageStatus: Function;
 }
 export default class RegistModal extends React.Component<Iprops, any> {
   private account: any;
   private password: any;
   handeleOnRegist = () => {
-    console.log("form-value", this.account.value, this.password.value);
-    if (this.account.value && this.password.value) {
-      this.props.axios.post("/upload", {
-        isRegist: true,
-        account: this.account.value,
-        password: this.password.value
-      }).then(res=> {
-        console.log('res',res)
-      }).catch(err=> {
-        console.log('err',err)
-      });
-    }
+    alert("暂不支持");
   };
   render() {
+    const { changePageStatus } = this.props;
     return (
       <div className="login-container">
         <div className="login-cart">
@@ -43,6 +34,7 @@ export default class RegistModal extends React.Component<Iprops, any> {
             />
           </div>
           <div className="button-container">
+            <button onClick={() => changePageStatus("login")}>登陆</button>
             <button onClick={this.handeleOnRegist}>注册</button>
           </div>
         </div>
