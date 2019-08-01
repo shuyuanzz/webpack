@@ -18,6 +18,18 @@ export default class LoginModal extends React.Component<Iprops, any> {
     this.cookieManagement = new CookieManagement();
   }
   handleOnLogin = () => {
+    if(!/^[a-zA-Z0-9_-]{4,16}$/.test(this.account.value)){
+      this.setState({
+        message:"Please enter 4 to 16 digits (letter, number, underscore, minus)"
+      })
+      return
+    }
+    if(this.password.value === "") {
+      this.setState({
+        message:"password can not be blank"
+      })
+      return
+    }
     this.props.axios
       .post("/login", {
         username: this.account.value,
@@ -63,7 +75,7 @@ export default class LoginModal extends React.Component<Iprops, any> {
             />
           </div>
           {message && (
-            <span className="login-message"> {`${this.state.message} !`}</span>
+            <span className="login-message"> {`${message} !`}</span>
           )}
           <div className="button-container">
             <button onClick={this.handleOnLogin}>登陆</button>

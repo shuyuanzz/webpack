@@ -28,29 +28,46 @@ export default class Index extends React.Component<any, Istate> {
     });
   };
   componentDidMount() {
-    this.axios
-      .get("/demolist")
-      .then(res => {
-        this.setState({
-          listData: res.data.listData
+    if (hasLogin()) {
+      this.axios
+        .get("/demolist")
+        .then(res => {
+          this.setState({
+            listData: res.data.listData
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    }
+  }
+  componentDidUpdate() {
+    if (hasLogin() && this.state.listData.length === 0) {
+      this.axios
+        .get("/demolist")
+        .then(res => {
+          this.setState({
+            listData: res.data.listData
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
   render() {
     const { pageStatus, listData } = this.state;
-    if (!listData.length) return null;
+
     switch (pageStatus) {
       case "index":
-        return (
+        return !listData.length ? null : (
           <AsideBar
             title="DEMO"
             subTitleList={listData}
             changePage={this.changePageStatus}
           />
         );
+
       case "login":
         return (
           <LoginModal
