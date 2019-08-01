@@ -28,7 +28,7 @@ export default class RegistModal extends React.Component<Iprops, any> {
           <div className="login-label">
             密码
             <input
-              type="password"
+              type="text"
               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;输入密码"
               ref={input => (this.password = input)}
             />
