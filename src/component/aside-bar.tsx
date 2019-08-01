@@ -50,16 +50,16 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
     window.removeEventListener("hashchange", this.hashHander);
   }
   render() {
-    const { title ,changePage } = this.props;
+    const { title ,changePage} = this.props;
     const { subTitle, showList, currentPage } = this.state;
     const child = hashFilter(this.state.hash);
-    return (
+    return (  
       <div className="main-container">
         <header>
           <IoIosMenu className="menu" onClick={this.changeListState} />
           <a href={window.location.pathname}>{title}</a>
           <ul className={showList ? "show" : ""}>
-            {this.props.subTitleList.map(item => (
+            {subTitle.map(item => (
               <li key={item.hash}>
                 <a href={`#${item.hash}`} onClick={this.changeListState}>
                   {item.name}
