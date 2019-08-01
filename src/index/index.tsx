@@ -2,30 +2,32 @@ import * as React from "react";
 import AsideBar from "../component/aside-bar";
 import "../styleSheet/index.css";
 import listData from "../../conf/nav-list-data";
-import LoginMoadl from "../component/login-modal";
+import LoginModal from "../component/login-modal";
+import RegistModal from "../component/regist-modal";
 interface Istate {
-  needLogin: boolean;
+  pageStatus: string;
 }
 export default class Index extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
     this.state = {
-      needLogin: true
+      pageStatus: "index"
     };
   }
-  changeStatus = () => {
-    this.setState(prevstate => {
-      return {
-        needLogin: !prevstate.needLogin
-      };
+  changePageStatus = (pageName:string):void => {
+    this.setState({
+      pageStatus:pageName
     });
-  };
+  }
   render() {
-    const { needLogin } = this.state;
-    return needLogin ? (
-      <LoginMoadl loginEvent={this.changeStatus}/>
-    ) : (
-      <AsideBar title="demo" subTitleList={listData} />
-    );
+    const { pageStatus } = this.state;
+    switch (pageStatus) {
+      case "index":
+        return <AsideBar title="DEMO" subTitleList={listData} changePage={this.changePageStatus}/>;
+      case "login":
+        return <LoginModal />;
+      case "regist":
+        return <RegistModal />;
+    }
   }
 }

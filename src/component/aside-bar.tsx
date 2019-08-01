@@ -5,6 +5,7 @@ import GitHubSvg from "./github-svg";
 interface Iprops {
   title: string;
   subTitleList: Array<{ name: string; hash: string }>;
+  changePage:Function;
 }
 interface Istate {
   subTitle: Array<{ name: string; hash: string }>;
@@ -20,7 +21,7 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
       subTitle: this.props.subTitleList,
       hash: "",
       showList: false,
-      currentPage: "",
+      currentPage: ""
     };
   }
   private changeListState = () => {
@@ -49,11 +50,11 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
     window.removeEventListener("hashchange", this.hashHander);
   }
   render() {
-    const { title } = this.props;
-    const { subTitle, showList, currentPage} = this.state;
+    const { title ,changePage } = this.props;
+    const { subTitle, showList, currentPage } = this.state;
     const child = hashFilter(this.state.hash);
     return (
-      <React.Fragment>
+      <div className="main-container">
         <header>
           <IoIosMenu className="menu" onClick={this.changeListState} />
           <a href={window.location.pathname}>{title}</a>
@@ -101,7 +102,15 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
         </nav>
         {child}
         <GitHubSvg />
-      </React.Fragment>
+        <div className="login-regist">
+          <a onClick={() => {
+            changePage('login')
+          }}>登陆</a>
+          <a onClick={() => {
+            changePage('regist')
+          }}>注册</a>
+        </div>
+      </div>
     );
   }
 }

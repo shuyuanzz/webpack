@@ -16,7 +16,7 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 5px 1px rgba(7, 17, 27, .1);
-    padding: 3% 4%;
+    padding: 50px 20px;
 }
 
 .login-title {
@@ -34,7 +34,8 @@
     font-size: 16px;
 }
 
-.login-cart label {
+.login-label {
+    font-size: 20px;
     color: rgb(11, 135, 218);
     padding-top: 50px;
     display: flex;
@@ -45,12 +46,12 @@
 .button-container {
     margin-top: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .button-container button {
     height: 48px;
-    width: 140px;
+    width: 80%;
     background-color: rgb(11, 135, 218);
     color: white;
     line-height: 48px;
@@ -58,4 +59,20 @@
     text-align: center;
     border-radius: 8px;
     box-shadow: 0px 9px 0px rgb(11, 135, 218), 0px 9px 25px rgba(0, 0, 0, .7)
+}
+
+@media screen and (max-width: 500px) {
+    .login-cart {
+        padding: 50px 20px;
+        width: 100vw;
+        height: 70vh;
+    }
+    .login-cart input {
+        display: inline-block;
+        height: 50px;
+        width: 60%;
+        color: #353535;
+        font-size: 16px;
+        border: 1px solid rgb(238,238,238);
+    }
 }

@@ -4,11 +4,26 @@
     box-sizing: border-box;
 }
 
+.main-container {
+    display: flex;
+}
+
+.login-regist {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 80px;
+    top: 10px;
+    width: 80px;
+}
+
 li {
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .nav-container {
+    display: inline-block;
     width: 272px;
     height: 100vh;
     border: 1px solid black;
@@ -72,6 +87,7 @@ li {
     width: 100%;
     letter-spacing: 1px;
 }
+
 .nav-list-cld a:hover {
     color: rgb(11, 135, 218);
     border-bottom: 2px solid rgb(11, 135, 218);
@@ -120,6 +136,20 @@ header>a {
 .selected {
     color: rgb(11, 135, 218) !important;
 }
+
+.login-regist a {
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(11, 135, 218);
+    letter-spacing: 1px;
+}
+.login-regist a:first-child {
+    padding-right: 8px;
+    border-right: 1px solid rgb(161, 159, 159);
+}
+
+
 @media screen and (max-width: 700px) {
     .nav-container {
         border: none;
@@ -137,6 +167,7 @@ header>a {
         display: flex;
         justify-content: center;
         border-bottom: 1px solid rgb(161, 159, 159);
+        width: 100%;
     }
 
     header ul {
@@ -146,12 +177,14 @@ header>a {
         position: fixed;
         top: 71px;
         left: 0;
-        background-color:rgb(255, 255, 255);
-        transition:all 0.5s linear;
+        background-color: rgb(255, 255, 255);
+        transition: all 0.5s linear;
     }
+
     .show {
         height: 250px;
     }
+
     header ul a {
         display: inline-block;
         border-bottom: 1px solid rgb(218, 216, 216);
@@ -163,5 +196,12 @@ header>a {
         font-weight: 300;
         color: rgb(54, 53, 53);
         letter-spacing: 1px;
+    }
+    .main-container {
+        display: block;
+    }
+    .login-regist {
+        right:15px;
+        top:50px;
     }
 }
