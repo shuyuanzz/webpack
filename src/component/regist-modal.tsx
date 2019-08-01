@@ -1,8 +1,26 @@
 import * as React from "react";
 import "../styleSheet/login.css";
+import Http from "../../tools/http";
 interface Iprops {
+  axios: Http;
 }
 export default class RegistModal extends React.Component<Iprops, any> {
+  private account: any;
+  private password: any;
+  handeleOnRegist = () => {
+    console.log("form-value", this.account.value, this.password.value);
+    if (this.account.value && this.password.value) {
+      this.props.axios.post("/upload", {
+        isRegist: true,
+        account: this.account.value,
+        password: this.password.value
+      }).then(res=> {
+        console.log('res',res)
+      }).catch(err=> {
+        console.log('err',err)
+      });
+    }
+  };
   render() {
     return (
       <div className="login-container">
@@ -10,24 +28,22 @@ export default class RegistModal extends React.Component<Iprops, any> {
           <div className="login-title">regist</div>
           <div className="login-label">
             用户名
-            <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;输入账号" />
+            <input
+              type="text"
+              placeholder="&nbsp;&nbsp;&nbsp;&nbsp;输入账号"
+              ref={input => (this.account = input)}
+            />
           </div>
           <div className="login-label">
             密码
             <input
               type="password"
               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;输入密码"
-            />
-          </div>
-          <div className="login-label">
-            确认密码
-            <input
-              type="password"
-              placeholder="&nbsp;&nbsp;&nbsp;&nbsp;输入密码"
+              ref={input => (this.password = input)}
             />
           </div>
           <div className="button-container">
-            <button>注册</button>
+            <button onClick={this.handeleOnRegist}>注册</button>
           </div>
         </div>
       </div>

@@ -112,14 +112,13 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
             new CleanWebpackPlugin(),
-            new FriendlyErrorPlugin()
     ].concat(htmlWebpackPlugin),
     optimization: {
         splitChunks: {
             minSize: 0,
             cacheGroups: {
                 vendors: {
-                    test: /(react|react-dom)/,
+                    test: /(react|react-dom|axios|react-icons)/,
                     name: 'vendors',
                     chunks: 'all'
                 },

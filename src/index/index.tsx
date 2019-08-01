@@ -30,7 +30,6 @@ export default class Index extends React.Component<any, Istate> {
     this.axios
       .get("/demolist")
       .then(res => {
-        console.log('res',res)
         this.setState({
           listData: res.data.listData
         });
@@ -54,7 +53,7 @@ export default class Index extends React.Component<any, Istate> {
       case "login":
         return <LoginModal />;
       case "regist":
-        return <RegistModal />;
+        return <RegistModal axios={this.axios}/>;
     }
   }
 }
