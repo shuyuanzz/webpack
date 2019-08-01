@@ -60,8 +60,9 @@
     border-radius: 8px;
     box-shadow: 0px 9px 0px rgb(11, 135, 218), 0px 9px 25px rgba(0, 0, 0, .7)
 }
+
 .login-message {
-    margin-top:20px;
+    margin-top: 20px;
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -70,18 +71,49 @@
     line-height: 30px;
     letter-spacing: 1px;
 }
+
+@keyframes bouncing-loader {
+    to {
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
+
+.bouncing-loader {
+    display: flex;
+    justify-content: center;
+}
+
+.bouncing-loader>div {
+    width: 1rem;
+    height: 1rem;
+    margin: 3rem 0.2rem;
+    background: rgb(11, 135, 218);
+    border-radius: 50%;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+
+.bouncing-loader>div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bouncing-loader>div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
 @media screen and (max-width: 500px) {
     .login-cart {
         padding: 50px 20px;
         width: 100vw;
-        height: 70vh;
+        height: 100vh;
     }
+
     .login-cart input {
         display: inline-block;
         height: 50px;
         width: 60%;
         color: #353535;
         font-size: 16px;
-        border: 1px solid rgb(238,238,238);
+        border: 1px solid rgb(238, 238, 238);
     }
 }
