@@ -8,7 +8,7 @@ import Http from "../../tools/http";
 import hasLogin from "../../tools/hasLogin";
 interface Istate {
   pageStatus: string;
-  listData: [];
+  listData: any[];
 }
 export default class Index extends React.Component<any, Istate> {
   public axios: Http;
@@ -16,7 +16,7 @@ export default class Index extends React.Component<any, Istate> {
     super(props);
     this.state = {
       pageStatus: hasLogin() ? "index" : "login",
-      listData: []
+      listData: listData
     };
     this.axios = new Http(
       "https://www.easy-mock.com/mock/5d4257ee7482bb7b59232d8f/shuyuanzz"
@@ -28,18 +28,18 @@ export default class Index extends React.Component<any, Istate> {
     });
   };
   componentDidMount() {
-    if (hasLogin()) {
-      this.axios
-        .get("/demolist")
-        .then(res => {
-          this.setState({
-            listData: res.data.listData
-          });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
+    // if (hasLogin()) {
+    //   this.axios
+    //     .get("/demolist")
+    //     .then(res => {
+    //       this.setState({
+    //         listData: res.data.listData
+    //       });
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }
   }
   componentDidUpdate() {
     if (hasLogin() && this.state.listData.length === 0) {

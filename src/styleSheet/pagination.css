@@ -1,0 +1,66 @@
+.pagination-container {
+    margin-top:70px;
+    flex:1;
+    display: flex;
+    padding: 5vw 5vh;
+    height: calc(100vh - 70px);
+}
+.page-picker {
+    border: 1px solid rgb(166, 206, 233);
+    position: relative;
+    display: flex;
+    vertical-align: top;
+    height: 32px;
+    border-radius: 10px;
+}
+.pagesize-changer{
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    color: white;
+    background-color:rgb(11, 135, 218);
+    border-radius: 10px;
+    width: 8vw;
+    text-align: center;
+    line-height: 30px;
+}
+.arrow {
+    cursor: pointer;
+    font-size: 30px;
+    background-color: rgb(11, 135, 218);
+    color: white;
+    border-radius: 50%;
+    transition: all 0.5s;
+    margin: 0 3vw;
+}
+.arrow:hover {
+    background-color: rgb(166, 206, 233);
+}
+.pagination-handle {
+    height: 30px;
+    margin-left: 2vw;
+}
+.pagenation-count {
+    font-size: 1vw;
+    color: rgb(11, 135, 218);
+    margin-left: 10vw;
+    line-height: 30px;
+    white-space: nowrap;
+}
+.page-number {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: rgb(11, 135, 218);
+    color: white;
+    line-height:30px;
+    text-align: center;
+    margin-left: 5px; 
+}
+.page-number:hover {
+    background-color: rgb(166, 206, 233);
+}
+.selected-page{
+    color: rgb(236, 116, 116);
+    font-weight: bold;
+}

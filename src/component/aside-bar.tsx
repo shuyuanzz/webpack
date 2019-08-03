@@ -22,7 +22,7 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
     super(props);
     this.state = {
       subTitle: this.props.subTitleList,
-      hash: "",
+      hash: window.location.hash.substr(1),
       showList: false,
       currentPage: ""
     };
