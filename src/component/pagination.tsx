@@ -40,11 +40,11 @@ export default class Pagination extends React.Component<Iprops, Istate> {
   };
   changePageSize = (pageSizeNumber: number): void => {
     this.setState({
-      pageSize: pageSizeNumber
+      pageSize: pageSizeNumber,
+      currentPage: 1
     });
   };
   prevPage = (): void => {
-    console.log(this.state.currentPage, this.pageCount);
     if (this.state.currentPage <= 1) return;
     this.setState(prevState => {
       return {
@@ -89,9 +89,17 @@ export default class Pagination extends React.Component<Iprops, Istate> {
           </div>
           <span className="pagenation-count">{`${(pageIndex - 1) * pageSize +
             1}-${pageIndex * pageSize} of ${itemList.length}`}</span>
-          <IoIosArrowBack className="arrow" onClick={this.prevPage} />
-          {spanSetOutput(this.pageCount,currentPage)}
-          <IoIosArrowForward className="arrow" onClick={this.nextPage} />
+          <IoIosArrowBack
+            className={`arrow ${currentPage === 1 ? "disable-button" : ""}`}
+            onClick={this.prevPage}
+          />
+          {spanSetOutput(this.pageCount, currentPage, this.toCurrentPage)}
+          <IoIosArrowForward
+            className={`arrow ${
+              currentPage === this.pageCount ? "disable-button" : ""
+            }`}
+            onClick={this.nextPage}
+          />
         </div>
       </div>
     );
