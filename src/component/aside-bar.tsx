@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IoIosSearch, IoIosMenu } from "react-icons/io";
-import hashFilter from "../../tools/hashFilter";
+import hashFilter from "./hashFilter";
 import GitHubSvg from "./github-svg";
 import hasLogin from "../../tools/hasLogin";
 import CookieManagement from "../../tools/cookieManagement";

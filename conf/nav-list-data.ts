@@ -1,11 +1,11 @@
 const listData = [
   {
-    name: "分页",
+    name: "Pagination",
     hash: "Pagination"
   },
   {
-    name: "test1",
-    hash: "test1"
+    name: "Swiper",
+    hash: "Swiper"
   },
   {
     name: "test2",
