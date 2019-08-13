@@ -41,7 +41,7 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
   };
   private handleOnChange = () => {
     let subTitle = this.props.subTitleList.filter(
-      item => item.name.indexOf(this.input.value) !== -1
+      item => item.name.toUpperCase().indexOf(this.input.value.toUpperCase()) !== -1
     );
     this.setState({
       subTitle: subTitle
