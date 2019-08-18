@@ -8,8 +8,8 @@ const listData = [
     hash: "Swiper"
   },
   {
-    name: "test2",
-    hash: "test2"
+    name: "staticPage",
+    hash: "staticPage"
   },
   {
     name: "test3",
