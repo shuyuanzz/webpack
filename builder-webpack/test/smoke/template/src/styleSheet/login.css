@@ -1,0 +1,119 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/login.bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.login-cart {
+    width: 450px;
+    height: 580px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(7, 17, 27, .1);
+    padding: 50px 20px;
+}
+
+.login-title {
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: rgb(11, 135, 218);
+    text-align: center;
+}
+
+.login-cart input {
+    height: 48px;
+    width: 300px;
+    color: #353535;
+    font-size: 16px;
+}
+
+.login-label {
+    font-size: 20px;
+    color: rgb(11, 135, 218);
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 50px;
+}
+
+.button-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container button {
+    height: 48px;
+    width: 40%;
+    background-color: rgb(11, 135, 218);
+    color: white;
+    line-height: 48px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 9px 0px rgb(11, 135, 218), 0px 9px 25px rgba(0, 0, 0, .7)
+}
+
+.login-message {
+    margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: rgb(245, 39, 39);
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+@keyframes bouncing-loader {
+    to {
+        opacity: 0.1;
+        transform: translate3d(0, -1rem, 0);
+    }
+}
+
+.bouncing-loader {
+    display: flex;
+    justify-content: center;
+}
+
+.bouncing-loader>div {
+    width: 1rem;
+    height: 1rem;
+    margin: 3rem 0.2rem;
+    background: rgb(11, 135, 218);
+    border-radius: 50%;
+    animation: bouncing-loader 0.6s infinite alternate;
+}
+
+.bouncing-loader>div:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bouncing-loader>div:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@media screen and (max-width: 500px) {
+    .login-cart {
+        padding: 50px 20px;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .login-cart input {
+        display: inline-block;
+        height: 50px;
+        width: 60%;
+        color: #353535;
+        font-size: 16px;
+        border: 1px solid rgb(238, 238, 238);
+    }
+}
