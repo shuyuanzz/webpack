@@ -94,7 +94,7 @@ module.exports = {
             {
                 test: /.(png|jpg|svg|jepg)$/,
                 use: [{
-                    loader: "file-loader", //图片大小小雨10kb时 自动base64进入js文件 从而达到 减少http请求数，优化页面加载性能 基于file-loader
+                    loader: "file-loader", //图片大小小于10kb时 自动base64进入js文件 从而达到 减少http请求数，优化页面加载性能 基于file-loader
                     options: {
                         name: '[name]_[hash:8].[ext]'
                     }
