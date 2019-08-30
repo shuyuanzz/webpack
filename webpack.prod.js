@@ -6,6 +6,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const glob = require("glob");
 const FriendlyErrorPlugin = require("friendly-errors-webpack-plugin");
 const SpeedMeasureWebpackPlugin = require("speed-measure-webpack-plugin");
+const WebpackBundleAnalyzer = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 const speedMeasureWebpackPlugin = new SpeedMeasureWebpackPlugin();
 const setMpa = () => {
   let entry = {};
@@ -52,7 +54,15 @@ module.exports = speedMeasureWebpackPlugin.wrap({
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader"
+        use: [
+        //   {
+        //     loader: "thread-loader",
+        //     options: {
+        //       workers: 3
+        //     }
+        //   },
+          "ts-loader"
+        ]
       },
       {
         test: /\.css$/,
@@ -106,6 +116,7 @@ module.exports = speedMeasureWebpackPlugin.wrap({
     }),
     new CleanWebpackPlugin(),
     new FriendlyErrorPlugin()
+    //new WebpackBundleAnalyzer(),
   ].concat(htmlWebpackPlugin),
   optimization: {
     splitChunks: {
@@ -123,6 +134,6 @@ module.exports = speedMeasureWebpackPlugin.wrap({
         }
       }
     }
-  },
-  stats: "errors-only"
+  }
+  //stats: "errors-only"
 });
