@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -40,7 +41,7 @@ const setMpa = () => {
   };
 };
 const { entry, htmlWebpackPlugin } = setMpa();
-module.exports = speedMeasureWebpackPlugin.wrap({
+module.exports = {
   entry: entry,
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -55,12 +56,12 @@ module.exports = speedMeasureWebpackPlugin.wrap({
       {
         test: /\.tsx?$/,
         use: [
-        //   {
-        //     loader: "thread-loader",
-        //     options: {
-        //       workers: 3
-        //     }
-        //   },
+          //   {
+          //     loader: "thread-loader",
+          //     options: {
+          //       workers: 3
+          //     }
+          //   },
           "ts-loader"
         ]
       },
@@ -107,6 +108,7 @@ module.exports = speedMeasureWebpackPlugin.wrap({
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css"
     }),
@@ -114,26 +116,12 @@ module.exports = speedMeasureWebpackPlugin.wrap({
       assetNameRegExp: /\.css$/,
       cssProcessor: require("cssnano")
     }),
-    new CleanWebpackPlugin(),
-    new FriendlyErrorPlugin()
+    new FriendlyErrorPlugin(),
     //new WebpackBundleAnalyzer(),
+    new webpack.DllReferencePlugin({
+            context:__dirname,
+            manifest: require('./build/library/library.json')
+        }),
   ].concat(htmlWebpackPlugin),
-  optimization: {
-    splitChunks: {
-      minSize: 0,
-      cacheGroups: {
-        vendors: {
-          test: /(react|react-dom|axios|react-icons)/,
-          name: "vendors",
-          chunks: "all"
-        },
-        commons: {
-          name: "commons",
-          chunks: "all",
-          minChunks: 2
-        }
-      }
-    }
-  }
   //stats: "errors-only"
-});
+};
