@@ -11,5 +11,7 @@ export default function hashFilter(hash: string) {
       return <SwiperController />;
     case "Pagination":
       return <Pagination initialPageSize={5} itemList={{ length: 100 }} />;
+    case "autoComplete": 
+      return "autoComplete";
   }
 }

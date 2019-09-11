@@ -12,8 +12,8 @@ const listData = [
     hash: "staticPage"
   },
   {
-    name: "test3",
-    hash: "test3"
+    name: "autoComplete",
+    hash: "autoComplete"
   },
   {
     name: "test4",
