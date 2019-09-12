@@ -118,10 +118,6 @@ module.exports = {
     }),
     new FriendlyErrorPlugin(),
     //new WebpackBundleAnalyzer(),
-    new webpack.DllReferencePlugin({
-            context:__dirname,
-            manifest: require('./build/library/library.json')
-        }),
   ].concat(htmlWebpackPlugin),
   //stats: "errors-only"
 };
