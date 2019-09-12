@@ -7,7 +7,6 @@
 .main-container {
     display: flex;
 }
-
 .login-regist {
     display: flex;
     justify-content: space-between;
@@ -226,7 +225,26 @@ header>a {
     line-height: 80px;
     color: white;
 }
-@media screen and (max-width: 700px) {
+.auto-complete {
+    width: 200px;
+    height: 30px;
+}
+.list-wapper {
+    margin-top: 5px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #e2e0e0;
+    padding: 5px 10px;
+}
+.list-wapper li {
+    font-weight: 400;
+    font-size: 14px;
+}
+.ac-wapper {
+    margin-left: 20px;
+}
+@media screen and (max-width: 640px) {
     .nav-container {
         border: none;
         height: 0;
