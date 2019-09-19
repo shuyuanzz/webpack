@@ -267,7 +267,13 @@ header>a {
         overflow: hidden;
         opacity: 0;
     }
-
+    .card-wapper {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    .li-card {
+        width: 100%;
+    }
     body #root {
         display: block;
     }

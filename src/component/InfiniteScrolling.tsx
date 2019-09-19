@@ -3,16 +3,20 @@ import listData from "../../conf/infiniListData";
 interface Iprops {
   listLength: number;
 }
-export default class InfiniteScrolling extends React.Component<Iprops, {}> {
+interface Istate {
+  startIndex: number;
+  endIndex: number;
+}
+export default class InfiniteScrolling extends React.Component<Iprops, Istate> {
   private topElement: HTMLElement;
   private bottomElement: HTMLElement;
   private observer: IntersectionObserver;
-  private startIndex: number;
-  private endIndex: number;
   constructor(props: Iprops) {
     super(props);
-    this.startIndex = 0;
-    this.endIndex = props.listLength;
+    this.state = {
+      startIndex: 0,
+      endIndex: props.listLength
+    };
   }
   componentDidMount() {
     this.intiateScrollObserver();
@@ -21,7 +25,7 @@ export default class InfiniteScrolling extends React.Component<Iprops, {}> {
     this.intiateScrollObserver();
   }
   intiateScrollObserver() {
-    if(!this.topElement || this.bottomElement) return;
+    if (!this.topElement || !this.bottomElement) return;
     this.observer = new IntersectionObserver(
       entries => this.observerCallBack(entries),
       {
@@ -35,18 +39,29 @@ export default class InfiniteScrolling extends React.Component<Iprops, {}> {
   }
   observerCallBack(entries: Array<IntersectionObserverEntry>) {
     entries.forEach(entry => {
-      if (entry.isIntersecting && entry.target.id === "top") {
-        console.log("top", "top show");
+      if (entry.isIntersecting && entry.target.id === "top" && this.state.startIndex > 0) {
+  
+        this.setState(prevState => ({
+          startIndex: prevState.startIndex - 1,
+          endIndex: prevState.endIndex - 1
+        }));
       }
-      if (entry.isIntersecting && entry.target.id === "bottom") {
-        console.log("bottom", "bottom show");
+      if (entry.isIntersecting && entry.target.id === "bottom" && this.state.endIndex < listData.length) {
+        this.setState(prevState => ({
+          startIndex: prevState.startIndex + 1,
+          endIndex: prevState.endIndex + 1
+        }));
       }
     });
   }
   render() {
-    const newListData: Array<{ key: number; value: number }> = listData.slice(
-      this.startIndex,
-      this.endIndex
+    console.log('length',listData.length)
+    const { endIndex, startIndex } = this.state;
+    console.log('endIndex',endIndex)
+    console.log('startIndex',startIndex)
+    const newListData: Array<{key:number,value:number}> = listData.slice(
+      startIndex,
+      endIndex
     );
     return (
       <ul className="card-wapper">
@@ -56,10 +71,16 @@ export default class InfiniteScrolling extends React.Component<Iprops, {}> {
             className="li-card"
             style={{ top: 195 * item.key }}
             ref={node => {
-              if (item.key === 0) this.topElement = node;
-              if (item.key === 14) this.bottomElement = node;
+              if (item.key === startIndex) this.topElement = node;
+              if (item.key === endIndex - 1) this.bottomElement = node;
             }}
-            id={item.key === 0 ? "top" : item.key === 14 ? "bottom" : "else"}
+            id={
+              item.key === startIndex
+                ? "top"
+                : item.key === endIndex - 1
+                ? "bottom"
+                : "else"
+            }
           >
             {item.value}
           </li>
