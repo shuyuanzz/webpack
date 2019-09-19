@@ -87,6 +87,9 @@ export default class Swiper extends React.Component<IProps, IState> {
       index: prevState.index + num
     }));
   };
+  shouldComponentUpdate(nextProps:IProps,nextState:IState) {
+    return this.state.index !== nextState.index
+  }
   transform = () => {
     this.wapper.style.transform = `translate3d(-${this.props.size.width *
       this.state.index}px,0,0)`;

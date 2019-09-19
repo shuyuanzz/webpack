@@ -47,6 +47,19 @@ export default class AutoCompleteBox extends React.Component<Iprops, Istate> {
           }));
           break;
         case 38:
+            this.setState(prevState => {
+              if (prevState.selectedIndex > 0) {
+                return {
+                  selectedIndex: prevState.selectedIndex - 1
+                };
+              } else {
+                return {
+                  selectedIndex: 2
+                };
+              }
+            });
+          break;
+        case 40:
           this.setState(prevState => {
             if (prevState.selectedIndex < 2) {
               return {
@@ -55,19 +68,6 @@ export default class AutoCompleteBox extends React.Component<Iprops, Istate> {
             } else {
               return {
                 selectedIndex: 0
-              };
-            }
-          });
-          break;
-        case 40:
-          this.setState(prevState => {
-            if (prevState.selectedIndex > 0) {
-              return {
-                selectedIndex: prevState.selectedIndex - 1
-              };
-            } else {
-              return {
-                selectedIndex: 2
               };
             }
           });

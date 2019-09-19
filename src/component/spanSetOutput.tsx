@@ -18,7 +18,6 @@ export default function spanSetOutput(
       );
     }
   } else if (currentPage <= 5) {
-    console.log('1')
     for (let i = 1; i <= 5; i++) {
       spanSet.push(
         <span

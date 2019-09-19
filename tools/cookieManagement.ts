@@ -46,13 +46,6 @@ export default class CookieManagement {
           break;
       }
     }
-    // console.log('shu',encodeURIComponent(sKey) +
-    // "=" +
-    // encodeURIComponent(sValue) +
-    // sExpires +
-    // (sDomain ? "; domain=" + sDomain : "") +
-    // (sPath ? "; path=" + sPath : "") +
-    // (bSecure ? "; secure" : ""))
     document.cookie =
       encodeURIComponent(sKey) +
       "=" +

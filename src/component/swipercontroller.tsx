@@ -22,9 +22,9 @@ export default class SwiperController extends React.Component<any, {}> {
   render() {
     return (
       <Swiper autoPlay hasCircle showSpot showArr>
-        {mockSwiperSlide.map(item => (
+        {mockSwiperSlide.map((item,index)=> (
           <div
-            key={item.name}
+            key={index}
             style={{ backgroundColor: item.color}}
             className="swiper-slide"
           >

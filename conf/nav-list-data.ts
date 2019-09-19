@@ -8,16 +8,16 @@ const listData = [
     hash: "Swiper"
   },
   {
-    name: "staticPage",
-    hash: "staticPage"
+    name: "StaticPage",
+    hash: "StaticPage"
   },
   {
-    name: "autoComplete",
-    hash: "autoComplete"
+    name: "AutoComplete",
+    hash: "AutoComplete"
   },
   {
-    name: "test4",
-    hash: "test4"
+    name: "InfiniteScrolling",
+    hash: "InfiniteScrolling"
   },
   {
     name: "test5",

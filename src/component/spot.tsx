@@ -10,7 +10,7 @@ export default class Spot extends React.Component<IProps, {}> {
     let arr: any[] = [];
     for (let i = 0; i < count; i++) {
       arr.push(
-        <span className={`swiper-spot ${index === i ? "selected-spot" : ""}`}/>
+        <span className={`swiper-spot ${index === i ? "selected-spot" : ""}`} key={i}/>
       );
     }
     return <div className="spot-container">{arr}</div>;
