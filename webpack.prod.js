@@ -120,26 +120,4 @@ module.exports = {
     //new WebpackBundleAnalyzer(),
   ].concat(htmlWebpackPlugin),
   //stats: "errors-only"
-  optimization: {
-    splitChunks: {
-      chunks:'all',
-      // minSize:20000,
-      // minChunks:2,
-      // maxAsyncRequests:5,
-      // maxInitialRequests:3,
-      // name:true,
-      // cacheGroups: {
-      //   default: {
-      //     minChunks:2,
-      //     priority:-20,
-      //     name:'commonChunks'
-      //   },
-      //   vendors: {
-      //     test: /React|ReactDom/,
-      //     priority:-10,
-      //     name: 'vendorChunks'
-      //   }
-      // }
-    }
-  }
 };
