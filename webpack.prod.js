@@ -6,10 +6,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const glob = require("glob");
 const FriendlyErrorPlugin = require("friendly-errors-webpack-plugin");
-const SpeedMeasureWebpackPlugin = require("speed-measure-webpack-plugin");
 const WebpackBundleAnalyzer = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const speedMeasureWebpackPlugin = new SpeedMeasureWebpackPlugin();
+  const autoprefixer = require("autoprefixer");
 const setMpa = () => {
   let entry = {};
   let htmlWebpackPlugin = [];
@@ -55,19 +54,22 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          //   {
-          //     loader: "thread-loader",
-          //     options: {
-          //       workers: 3
-          //     }
-          //   },
-          "ts-loader"
-        ]
+        use: ["ts-loader"]
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          {
+            loader: "px2rem-loader",
+            options: {
+              remUnit: 75,
+              remPreision: 8
+            }
+          }
+        ]
       },
       {
         test: /\.less$/,
@@ -75,16 +77,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           "css-loader",
           "less-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => {
-                require("autoprefixer")({
-                  overrideBrowserslist: ["last version", ">1%", "ios 7"]
-                });
-              }
-            }
-          },
+         "postcss-loader",
           {
             loader: "px2rem-loader",
             options: {
@@ -116,8 +109,30 @@ module.exports = {
       assetNameRegExp: /\.css$/,
       cssProcessor: require("cssnano")
     }),
-    new FriendlyErrorPlugin(),
+    new FriendlyErrorPlugin()
     //new WebpackBundleAnalyzer(),
   ].concat(htmlWebpackPlugin),
   //stats: "errors-only"
+  optimization: {
+    splitChunks: {
+      chunks: "initial",
+      minSize: 20000,
+      minChunks: 2,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        default: {
+          minChunks: 2,
+          priority: -20,
+          name: "common"
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          name: "vendors"
+        }
+      }
+    }
+  }
 };
