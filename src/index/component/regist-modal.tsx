@@ -1,6 +1,6 @@
 import * as React from "react";
-import "../styleSheet/login.css";
-import Http from "../../tools/http";
+import "../../../styleSheet/login.css";
+import Http from "../../../tools/http";
 interface Iprops {
   axios: Http;
   changePageStatus: Function;

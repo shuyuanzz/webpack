@@ -1,6 +1,6 @@
 import * as React from "react";
 import AsideBar from "./component/aside-bar";
-import "../styleSheet/index.css";
+import "../../styleSheet/index.css";
 import listData from "../../conf/nav-list-data";
 import LoginModal from "./component/login-modal";
 import RegistModal from "./component/regist-modal";

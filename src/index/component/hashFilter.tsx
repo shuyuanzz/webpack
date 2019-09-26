@@ -3,7 +3,7 @@ import * as React from "react";
 import SwiperController from "./swipercontroller";
 import AutoCompleteBox from "./autoComplete";
 import InfiniteScrolling from "./infiniteScrolling"
-import autoCompleteOption from "../../conf/autoCompleteOption";
+import autoCompleteOption from "../../../conf/autoCompleteOption";
 export default function hashFilter(hash: string) {
   switch (hash) {
     case "":

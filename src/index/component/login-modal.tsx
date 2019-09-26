@@ -1,7 +1,7 @@
 import * as React from "react";
-import "../styleSheet/login.css";
-import Http from "../../tools/http";
-import CookieManagement from "../../tools/cookieManagement";
+import "../../../styleSheet/login.css";
+import Http from "../../../tools/http";
+import CookieManagement from "../../../tools/cookieManagement";
 interface Iprops {
   axios: Http;
   changePageStatus: Function;

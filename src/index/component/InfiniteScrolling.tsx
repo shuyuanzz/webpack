@@ -1,5 +1,5 @@
 import * as React from "react";
-import listData from "../../conf/infiniListData";
+import listData from "../../../conf/infiniListData";
 interface Iprops {
   listLength: number;
 }

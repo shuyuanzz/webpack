@@ -1,6 +1,6 @@
 import * as React from "react";
-import "../styleSheet/pagination.css";
-import pageSizeHandler from "../../tools/pageSizeHandler";
+import "../../../styleSheet/pagination.css";
+import pageSizeHandler from "../../../tools/pageSizeHandler";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { number } from "prop-types";
 import spanSetOutput from "./spanSetOutput";
