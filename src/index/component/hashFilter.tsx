@@ -4,6 +4,7 @@ import SwiperController from "./swipercontroller";
 import AutoCompleteBox from "./autoComplete";
 import InfiniteScrolling from "./infiniteScrolling"
 import autoCompleteOption from "../../../conf/autoCompleteOption";
+import Cascader from "./cascader";
 export default function hashFilter(hash: string) {
   switch (hash) {
     case "":
@@ -18,5 +19,7 @@ export default function hashFilter(hash: string) {
       return <AutoCompleteBox optionList={autoCompleteOption}/>;
     case "InfiniteScrolling":
       return <InfiniteScrolling listLength={15}/>
+    case "Cascader":
+      return <Cascader/>
   }
 }

@@ -55,10 +55,7 @@ export default class InfiniteScrolling extends React.Component<Iprops, Istate> {
     });
   }
   render() {
-    console.log('length',listData.length)
     const { endIndex, startIndex } = this.state;
-    console.log('endIndex',endIndex)
-    console.log('startIndex',startIndex)
     const newListData: Array<{key:number,value:number}> = listData.slice(
       startIndex,
       endIndex
