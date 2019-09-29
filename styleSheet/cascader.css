@@ -1,45 +1,56 @@
 .cascader-input {
-    display: inline-block;
-    margin-top: 30px;
-    height: 40px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #d9d9d9;
-    color:  #d9d9d9;
-    font-size: 14px;
-    padding-left: 20px;
+  display: inline-block;
+  margin-top: 30px;
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.cascader-input ::-webkit-input-placeholder {
+  color: #d9d9d9;
 }
 .cascader-wapper {
-    position: relative;
-    padding: 50px 50px;
+  position: relative;
+  padding: 50px 50px;
 }
 
-.cascader-input:hover{
-    border: 1px solid rgb(105, 182, 233);
+.cascader-input:hover {
+  border: 1px solid rgb(105, 182, 233);
 }
 
 .cascader-input-arr {
-    position: absolute;
-    color:  #d9d9d9;
-    height: 20px;
-    width: 20px;
-    top: 116px;
-    right: 55px;
-    transition: all 0.3s;
+  position: absolute;
+  color: #d9d9d9;
+  height: 20px;
+  width: 20px;
+  top: 116px;
+  left: 320px;
+  transition: all 0.3s;
 }
 .cascader-sublist-wapper {
-    margin-top: 5px;
-    height: 180px;
-    width: 120px;
-    list-style-type: none;
-    box-shadow: 2px 2px 2px 2px #d9d9d9;
-    border-radius: 4px;
+  margin-top: 5px;
+  height: 180px;
+  width: 120px;
+  list-style-type: none;
+  border-radius: 4px;
+  overflow: auto;
+  border-right: 1px solid #d9d9d9;
 }
 .ca-sub-i {
-    padding: 10px 10px !important;
-    font-weight: 400;
-    border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px !important;
+  font-weight: 400;
+  border-radius: 4px;
+  line-height: 22px;
 }
 .ca-sub-i:hover {
-    background-color: rgb(194, 224, 245);
+  background-color: rgb(194, 224, 245);
+}
+.ca-sub-container {
+  display: inline-flex;
+  box-shadow: 2px 2px 2px 2px #d9d9d9;
 }
