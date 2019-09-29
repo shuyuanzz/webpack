@@ -2,7 +2,6 @@ import * as React from "react";
 import "../../../styleSheet/pagination.css";
 import pageSizeHandler from "../../../tools/pageSizeHandler";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { number } from "prop-types";
 import spanSetOutput from "./spanSetOutput";
 interface Iprops {
   initialPageSize: number;
@@ -71,6 +70,8 @@ export default class Pagination extends React.Component<Iprops, Istate> {
     const { pageSize, showPopup, pageIndex, currentPage } = this.state;
     this.pageCount = Math.ceil(itemList.length / this.state.pageSize);
     return (
+      <>
+      <h3 className="pagination-title">Pagination</h3>
       <div className="pagination-container">
         <div className="page-picker">
           <div className="pagesize-changer" onClick={this.changePopupStatus}>
@@ -102,6 +103,7 @@ export default class Pagination extends React.Component<Iprops, Istate> {
           />
         </div>
       </div>
+      </>
     );
   }
 }

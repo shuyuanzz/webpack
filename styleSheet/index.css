@@ -159,13 +159,18 @@ header>a {
 .swiper-wapper {
     display: flex;
     transition-property: transform;
-    height: 100%;
-    width: 100
 }
 
 .swiper-container {
     position: relative;
     overflow: hidden;
+    height: 500px;
+}
+.swiper-container {
+    margin: 50px;
+}
+.swiper-container h3 {
+    margin-bottom:  30px;
 }
 
 .swiper-slide {
@@ -321,4 +326,13 @@ header>a {
         right: 15px;
         top: 50px;
     }
+}
+.ac-wapper {
+    padding: 50px;
+}
+.ac-wapper input {
+    margin-top: 30px;
+}
+.pagination-title {
+    margin: 50px;
 }

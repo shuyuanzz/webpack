@@ -100,6 +100,7 @@ export default class AutoCompleteBox extends React.Component<Iprops, Istate> {
     const { keyWords, showList, selectedIndex } = this.state;
     return (
       <div className="ac-wapper">
+        <h3>AutoComplete</h3>
         <input
           type="text"
           placeholder="please enter your email"
