@@ -6,9 +6,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const glob = require("glob");
 const FriendlyErrorPlugin = require("friendly-errors-webpack-plugin");
-const WebpackBundleAnalyzer = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-  const autoprefixer = require("autoprefixer");
 const setMpa = () => {
   let entry = {};
   let htmlWebpackPlugin = [];
