@@ -5,45 +5,46 @@ import Index from "..";
 interface Iprops {
   showList: boolean;
   changeValue: Function;
+  state: {
+    ssListIndex: number;
+    sssListIndex: number;
+    sListIndex: number;
+  };
+  setState: Function;
 }
-interface Istate {
-  ssListIndex: number;
-  sssListIndex: number;
-  sListIndex: number;
-}
+interface Istate {}
 export default class CascaderSubList extends React.Component<Iprops, Istate> {
   constructor(props: Iprops) {
     super(props);
-    this.state = {
-      sListIndex: -1,
-      ssListIndex: -1,
-      sssListIndex: -1
-    };
   }
-  sShowListHandler = (index: number, name: string) => {
-    this.setState({
+  sShowListHandler = (index: number) => {
+    this.props.setState({
       sListIndex: index,
       ssListIndex: -1,
       sssListIndex: -1
     });
   };
-  ssShowListHandler = (index: number, name: string) => {
-    this.setState({
+  ssShowListHandler = (index: number) => {
+    const { sListIndex } = this.props.state;
+    this.props.setState(({
+      sListIndex:sListIndex,
       ssListIndex: index,
       sssListIndex: -1
-    });
+    }));
   };
-  submitResult = (index: number, name: string) => {
-    const { sListIndex, ssListIndex} = this.state;
+  submitResult = (index: number) => {
+    const { sListIndex, ssListIndex } = this.props.state;
     let resultstr: string = `${provinceConf[sListIndex].name}/${provinceConf[sListIndex].city[ssListIndex].name}/${provinceConf[sListIndex].city[ssListIndex].county[index]}`;
-    this.setState({
+    this.props.setState({
+      sListIndex:sListIndex,
+      ssListIndex:ssListIndex,
       sssListIndex: index
     });
     this.props.changeValue(resultstr);
   };
   render() {
     const { showList } = this.props;
-    const { sListIndex, ssListIndex, sssListIndex } = this.state;
+    const { sListIndex, ssListIndex, sssListIndex } = this.props.state;
     const cityList = provinceConf[sListIndex] && provinceConf[sListIndex].city;
     const countyList =
       cityList && cityList[ssListIndex] && cityList[ssListIndex].county;
@@ -55,7 +56,7 @@ export default class CascaderSubList extends React.Component<Iprops, Istate> {
               return (
                 <li
                   className="ca-sub-i"
-                  onClick={() => this.sShowListHandler(index, item.name)}
+                  onClick={() => this.sShowListHandler(index)}
                   key={item.name}
                   style={sListIndex === index ? { fontWeight: "bold" } : {}}
                 >
@@ -72,7 +73,7 @@ export default class CascaderSubList extends React.Component<Iprops, Istate> {
                   <li
                     className="ca-sub-i"
                     key={item.name}
-                    onClick={() => this.ssShowListHandler(index, item.name)}
+                    onClick={() => this.ssShowListHandler(index)}
                     style={ssListIndex === index ? { fontWeight: "bold" } : {}}
                   >
                     {item.name}
@@ -89,7 +90,7 @@ export default class CascaderSubList extends React.Component<Iprops, Istate> {
                   <li
                     className="ca-sub-i"
                     key={item}
-                    onClick={() => this.submitResult(index, item)}
+                    onClick={() => this.submitResult(index)}
                     style={sssListIndex === index ? { fontWeight: "bold" } : {}}
                   >
                     {item}
