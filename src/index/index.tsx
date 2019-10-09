@@ -6,6 +6,7 @@ import LoginModal from "./component/login-modal";
 import RegistModal from "./component/regist-modal";
 import Http from "../../tools/http";
 import hasLogin from "../../tools/hasLogin";
+import StaticPage from "./component/StaticPage";
 interface Istate {
   pageStatus: string;
   listData: any[];
@@ -15,7 +16,7 @@ export default class Index extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
     this.state = {
-      pageStatus: hasLogin() ? "index" : "login",
+      pageStatus: "StaticPage",
       listData: listData
     };
     this.axios = new Http(
@@ -82,6 +83,10 @@ export default class Index extends React.Component<any, Istate> {
             changePageStatus={this.changePageStatus}
           />
         );
+        case "StaticPage": 
+        return (
+          <StaticPage/>
+        )
     }
   }
 }

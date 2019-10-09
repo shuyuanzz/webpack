@@ -326,6 +326,9 @@ header>a {
         right: 15px;
         top: 50px;
     }
+    .sp-header-top {
+        padding: 0 0 !important;
+    }
 }
 .ac-wapper {
     padding: 50px;
@@ -336,3 +339,24 @@ header>a {
 .pagination-title {
     margin: 50px;
 }
+.sp-wapper {
+    background-color: #f4f5f5;
+    height: 100vh;
+}
+.sp-header-wp {
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+.sp-header-top {
+    display: flex;
+    align-items: center;
+    height: 61px;
+    margin: auto;
+    max-width: 960px;
+}
+.sp-logo-wp {
+    cursor: pointer;
+}
+
