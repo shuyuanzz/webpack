@@ -22,6 +22,10 @@ const listData = [
   {
     name: "Cascader",
     hash: "Cascader"
+  },
+  {
+    name: "TimePicker",
+    hash: "TimePicker"
   }
 ];
 export default listData;

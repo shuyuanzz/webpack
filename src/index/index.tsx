@@ -16,7 +16,7 @@ export default class Index extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
     this.state = {
-      pageStatus: "StaticPage",
+      pageStatus: hasLogin() ? "index" : "login",
       listData: listData
     };
     this.axios = new Http(

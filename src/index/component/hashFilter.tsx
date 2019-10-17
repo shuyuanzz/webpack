@@ -5,6 +5,7 @@ import AutoCompleteBox from "./autoComplete";
 import InfiniteScrolling from "./infiniteScrolling"
 import autoCompleteOption from "../../../conf/autoCompleteOption";
 import Cascader from "./cascader";
+import TimePicker from "./timePicker";
 export default function hashFilter(hash: string) {
   switch (hash) {
     case "":
@@ -21,5 +22,7 @@ export default function hashFilter(hash: string) {
       return <InfiniteScrolling listLength={15}/>
     case "Cascader":
       return <Cascader/>
+    case "TimePicker":
+      return <TimePicker/>
   }
 }

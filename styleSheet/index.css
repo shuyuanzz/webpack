@@ -360,3 +360,15 @@ header>a {
     cursor: pointer;
 }
 
+.tp-wp {
+    margin: 50px;
+}
+.mt50 {
+    margin-top: 50px;
+}
+.tp-input {
+    padding: 0 20px;
+    font-size: 14px;
+    width: 150px;
+    height: 40px;
+}
