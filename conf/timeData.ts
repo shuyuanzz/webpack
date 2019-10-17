@@ -25,7 +25,6 @@ export const hour = [
   "23"
 ];
 export const mAndS = [
-  [
     "00",
     "01",
     "02",
@@ -86,5 +85,5 @@ export const mAndS = [
     "57",
     "58",
     "59"
-  ]
 ];
+export const emptyArr = ['','','','','','','','','']

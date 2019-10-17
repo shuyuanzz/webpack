@@ -372,3 +372,30 @@ header>a {
     width: 150px;
     height: 40px;
 }
+.tp-list-ct {
+    display: flex;
+}
+.tp-list-ct ul:nth-child(1),.tp-list-ct ul:nth-child(2) {
+    border-right: 1px solid  #e2e0e0;
+}
+.tp-list {
+    height: 330px;
+    overflow: auto;
+    list-style-type: none;
+}
+.tp-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    font-size: 14px;
+    height: 33px;
+}
+.tp-res-wp {
+    width: 210px;
+    box-shadow: 2px 2px 2px 2px #e2e0e0;
+}
+.tp-res {
+    height: 40px;
+    border-bottom: 1px solid #e2e0e0;
+}
