@@ -10,6 +10,7 @@ interface IState {
   selectedValue: string;
 }
 export default class TimePicker extends React.Component<{}, IState> {
+  private target: any;
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -18,6 +19,11 @@ export default class TimePicker extends React.Component<{}, IState> {
       min: "00",
       sec: "00",
       selectedValue: ""
+    };
+    this.target  = {
+      h:4,
+      m:4,
+      s:4,
     };
   }
   clearSleectedValue = (e: any) => {
@@ -28,6 +34,11 @@ export default class TimePicker extends React.Component<{}, IState> {
       min: "00",
       sec: "00"
     });
+    this.target  = {
+      h:4,
+      m:4,
+      s:4,
+    };
   };
   clickHandler = () => {
     this.setState({
@@ -50,10 +61,23 @@ export default class TimePicker extends React.Component<{}, IState> {
       }));
     }
   };
+  scrollAnimate = (element: any, target: number,type:string) => {
+    const timer = setInterval(() => {
+      if (this.target[type] <= target) {
+        element.scrollTop = this.target[type]; 
+        this.target[type] += 4;
+      } else {
+        clearInterval(timer);
+      }
+    }, 10);
+  };
   itemClickHandle = (e: any, item: string, type: string) => {
     e.persist();
-    e.target.parentNode.scrollTop =
-      e.target.offsetTop - e.target.parentNode.offsetTop;
+    this.scrollAnimate(
+      e.target.parentNode,
+      e.target.offsetTop - e.target.parentNode.offsetTop,
+      type
+    );
     switch (type) {
       case "h":
         this.setState({
