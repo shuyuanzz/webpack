@@ -366,14 +366,28 @@ header>a {
 .mt50 {
     margin-top: 50px;
 }
+.tp-ct {
+    position: relative;
+}
 .tp-input {
     padding: 0 20px;
     font-size: 14px;
     width: 150px;
     height: 40px;
 }
+.tp-input:hover {
+    border: 1px solid #69b6e9
+}
 .tp-list-ct {
     display: flex;
+}
+.tp-md-time {
+    position: absolute;
+    right: 5px;
+    top:10px;
+    height: 20px;
+    width: 20px;
+    color: #e2e0e0;
 }
 .tp-list-ct ul:nth-child(1),.tp-list-ct ul:nth-child(2) {
     border-right: 1px solid  #e2e0e0;
@@ -396,6 +410,9 @@ header>a {
     box-shadow: 2px 2px 2px 2px #e2e0e0;
 }
 .tp-res {
+    line-height: 40px;
+    text-align: center;
     height: 40px;
     border-bottom: 1px solid #e2e0e0;
+    color: #888585;
 }
