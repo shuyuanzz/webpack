@@ -393,7 +393,7 @@ header>a {
     border-right: 1px solid  #e2e0e0;
 }
 .tp-list {
-    height: 330px;
+    height: 320px;
     overflow: auto;
     list-style-type: none;
 }

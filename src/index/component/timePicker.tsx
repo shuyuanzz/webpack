@@ -21,9 +21,9 @@ export default class TimePicker extends React.Component<{}, IState> {
       selectedValue: ""
     };
     this.target  = {
-      h:4,
-      m:4,
-      s:4,
+      h:0,
+      m:0,
+      s:0,
     };
   }
   clearSleectedValue = (e: any) => {
@@ -35,9 +35,9 @@ export default class TimePicker extends React.Component<{}, IState> {
       sec: "00"
     });
     this.target  = {
-      h:4,
-      m:4,
-      s:4,
+      h:0,
+      m:0,
+      s:0,
     };
   };
   clickHandler = () => {
@@ -62,8 +62,10 @@ export default class TimePicker extends React.Component<{}, IState> {
     }
   };
   scrollAnimate = (element: any, target: number,type:string) => {
+    console.log(target)
+    this.target[type] = element.scrollTop + 4;
     const timer = setInterval(() => {
-      if (this.target[type] <= target) {
+      if (this.target[type] <= target ) {
         element.scrollTop = this.target[type]; 
         this.target[type] += 4;
       } else {
