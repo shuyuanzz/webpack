@@ -96,9 +96,6 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
                 <a
                   href={`#${item.hash}`}
                   onClick={() => {
-                    if(item.name === 'StaticPage') {
-                      changePage('StaticPage')
-                    }
                     this.setState({
                       currentPage: item.name
                     });
