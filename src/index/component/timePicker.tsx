@@ -62,7 +62,6 @@ export default class TimePicker extends React.Component<{}, IState> {
     }
   };
   scrollAnimate = (element: any, target: number,type:string) => {
-    console.log(target)
     this.target[type] = element.scrollTop + 4;
     const timer = setInterval(() => {
       if (this.target[type] <= target ) {
