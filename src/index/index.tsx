@@ -28,20 +28,6 @@ export default class Index extends React.Component<any, Istate> {
       pageStatus: pageName
     });
   };
-  componentDidMount() {
-    // if (hasLogin()) {
-    //   this.axios
-    //     .get("/demolist")
-    //     .then(res => {
-    //       this.setState({
-    //         listData: res.data.listData
-    //       });
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
-  }
   componentDidUpdate() {
     if (hasLogin() && this.state.listData.length === 0) {
       this.axios
