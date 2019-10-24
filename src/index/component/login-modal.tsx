@@ -40,7 +40,7 @@ export default class LoginModal extends React.Component<Iprops, any> {
       })
       .then(res => {
         if (res.data.data.message === "success") {
-          this.cookieManagement.setItem("login", true, null, null, null, null);
+          this.cookieManagement.setItem("userID", 'admin', null, null, null, null);
           this.props.changePageStatus("index");
         } else {
           this.setState({

@@ -48,7 +48,7 @@ export default class AsideBar extends React.Component<Iprops, Istate> {
     });
   };
   private logout = () => {
-    this.cookieManagement.removeItem('login',null,null);
+    this.cookieManagement.removeItem('userID',null,null);
     this.props.changePage("login");
   }
   componentDidMount() {
