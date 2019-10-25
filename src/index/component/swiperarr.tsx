@@ -1,20 +1,21 @@
 import * as React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 interface IProps {
-  changeIndex: Function;
+  goBack:Function;
+  goFoward:Function;
 }
 export default class SwiperArr extends React.Component<IProps, {}> {
   render() {
-    const { changeIndex } = this.props;
+    const {goFoward , goBack} = this.props;
     return (
       <div className="swiper-arr">
         <IoIosArrowBack
           className="swiper-arrow"
-          onClick={() => changeIndex(-1)}
+          onClick={() => goBack()}
         />
         <IoIosArrowForward
           className="swiper-arrow"
-          onClick={() => changeIndex(1)}
+          onClick={() => goFoward()}
         />
       </div>
     );

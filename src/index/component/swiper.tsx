@@ -63,32 +63,49 @@ export default class Swiper extends React.Component<IProps, IState> {
   };
   handleTouchEnd = (e: any) => {
     e.persist();
-    if (e.clientX < this.mouseStartClientX) {
-      if (this.state.index >= this.props.children.length - 1) return;
-      this.setState(prevState => ({
-        index: prevState.index + 1
-      }));
+    if (
+      e.clientX < this.mouseStartClientX 
+    ) {
+      this.goFoward()
     } else if (e.clientX > this.mouseStartClientX) {
-      if (this.state.index <= 0) return;
-      this.setState(prevState => ({
-        index: prevState.index - 1
-      }));
+      this.goBack()
     } else {
       return;
     }
   };
-  changeIndex = (num: number) => {
-    if (
-      (num < 0 && this.state.index === 0) ||
-      (num > 0 && this.state.index >= this.props.children.length - 1)
-    )
-      return;
-    this.setState(prevState => ({
-      index: prevState.index + num
-    }));
+  goFoward = () => {
+    const { children, hasCircle } = this.props;
+    const { index } = this.state;
+    console.log('index:',index,'children:',children.length,'hasCircle:',hasCircle)
+    if (index >= children.length - 1 && hasCircle) {
+      this.setState({
+        index: 0
+      });
+    } else if (index < children.length - 1) {
+      this.setState(prevState => ({
+        index: prevState.index + 1,
+      }));
+    } else {
+      return
+    }
   };
-  shouldComponentUpdate(nextProps:IProps,nextState:IState) {
-    return this.state.index !== nextState.index
+  goBack = () => {
+    const { children, hasCircle } = this.props;
+    const { index } = this.state;
+    if(index > 0) {
+      this.setState(prevState => ({
+        index: prevState.index -1
+      }))
+    }else if(index<= 0 && hasCircle) {
+      this.setState({
+        index: children.length - 1
+      })
+    }else {
+      return
+    }
+  }
+  shouldComponentUpdate(nextProps: IProps, nextState: IState) {
+    return this.state.index !== nextState.index;
   }
   transform = () => {
     this.wapper.style.transform = `translate3d(-${this.props.size.width *
@@ -111,7 +128,7 @@ export default class Swiper extends React.Component<IProps, IState> {
           {children}
         </div>
         {showSpot && <Spot count={children.length} index={this.state.index} />}
-        {showArr && <SwiperArr changeIndex={this.changeIndex} />}
+        {showArr && <SwiperArr goFoward={this.goFoward} goBack={this.goBack}/>}
       </div>
     );
   }
